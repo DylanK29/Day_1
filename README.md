@@ -1,0 +1,1 @@
+End‑to‑end analytics POC for Solutions/Analytics Engineering: Snowflake + dbt (RAW→bronze/silver/gold), tested KPIs (daily revenue/orders/AOV). Ready for dashboard/orchestration/API. How to run: dbt debug/run/test with profiles.yml pointing to POC_DB.CORE.
