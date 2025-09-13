@@ -1,0 +1,36 @@
+﻿version: 2
+
+models:
+  - name: bronze_customers
+    description: Bronze view over RAW.CUSTOMERS
+
+  - name: bronze_orders
+    description: Bronze view over RAW.ORDERS
+
+  - name: bronze_events
+    description: Bronze view over RAW.EVENTS
+
+  - name: silver_customers
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: silver_orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('silver_customers')
+              field: customer_id
+
+  - name: gold_daily_kpis
+    columns:
+      - name: day
+        tests:
+          - not_null
